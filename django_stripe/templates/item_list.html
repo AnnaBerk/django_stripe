@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        {% for item in items %}
+            <h1>{{ item }}</h1>
+            <p>{{ item.description }}</p>
+            <p>{{ item.price }} {{ item.currency }} </p>
+            <a href="{% url 'payments:item' item.id %}" class="btn btn-primary">Go to order page</a>
+        {% endfor %}
+    </div>
+{% endblock content %}

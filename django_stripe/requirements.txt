@@ -1,0 +1,15 @@
+asgiref==3.6.0
+certifi==2022.12.7
+charset-normalizer==3.0.1
+Django==3.2.8
+generics==6.0.0
+gunicorn==20.1.0
+idna==3.4
+python-dotenv==0.21.1
+requests==2.28.2
+sqlparse==0.4.3
+stripe==5.1.1
+tzdata==2022.7
+urllib3==1.26.14
+psycopg2-binary
+

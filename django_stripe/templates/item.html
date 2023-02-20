@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ item }}</h1>
+    <p>{{ item.description }}</p>
+    <p>{{ item.price }} {{ item.currency }} </p>
+    <button id="buy-button">Buy</button>
+    <script type="text/javascript">
+        fetch("{% url 'payments:config' item.currency %}")
+        .then((result) => { return result.json(); })
+        .then((data) => {
+            const stripe = Stripe(data.publicKey);
+            var buyButton = document.getElementById('buy-button')
+            buyButton.addEventListener("click", () => {
+                fetch('{% url 'payments:buy_item' item.id %}', {method: 'GET'})
+                .then((result) => { return result.json(); })
+                .then((data) => {
+                    return stripe.redirectToCheckout({sessionId: data.sessionId})
+            })
+        });
+    });
+    </script>
+{% endblock content %}
+
